@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+      - ../data:/workspace/data:consistent
+    command: sleep infinity
+    environment:
+      - PYTHONPATH=/workspace
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+      - "5000:5000"
+      - "8888:8888"  # Jupyter notebook port
